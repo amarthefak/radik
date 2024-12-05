@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Кинопортал</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .tabs {
+            display: flex;
+            background-color: #333;
+            padding: 10px;
+        }
+        .tab {
+            padding: 14px 20px;
+            color: white;
+            cursor: pointer;
+            margin-right: 10px;
+            border: none;
+            background: none;
+        }
+        .tab:hover {
+            background-color: #555;
+        }
+        .content {
+            padding: 20px;
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tabs">
+        <button class="tab" onclick="showContent('series')">Сериалы</button>
+        <button class="tab" onclick="showContent('movies')">Фильмы</button>
+        <button class="tab" onclick="showContent('cartoons')">Мультфильмы</button>
+    </div>
+
+    <div id="series" class="content">
+        <h2>Сериалы</h2>
+        <ul>
+            <li>Игра престолов</li>
+            <li>Друзья</li>
+            <li>Во все тяжкие</li>
+        </ul>
+    </div>
+
+    <div id="movies" class="content">
+        <h2>Фильмы</h2>
+        <ul>
+            <li>Назад в будущее</li>
+            <li>Титаник</li>
+            <li>Зеленая миля</li>
+        </ul>
+    </div>
+    
+    <div id="cartoons" class="content">
+        <h2>Мультфильмы</h2>
+        <ul>
+            <li>Корпорация монстров</li>
+            <li>Холодное сердце</li>
+            <li><a href="shrek.html" target="_blank">  шрек </a></li>
+        </ul>
+    </div>
+
+    <script>
+        function showContent(tab) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tab).classList.add('active');
+        }
+
+        // Показываем сериалы по умолчанию
+        showContent('series');
+    </script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Streaming</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1f1f1f;
+            padding: 10px 20px;
+            border-bottom: 2px solid #444;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .main {
+            margin-top: 20px;
+        }
+        .video-player {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .video-player video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .ad-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            font-size: 18px;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .ad-container.active {
+            opacity: 1;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .controls button {
+            padding: 10px 15px;
+            background-color: #444;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .controls button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Movie Streaming</h1>
+            <button id="adToggleBtn">Show Ad</button>
+        </header>
+
+        <main class="main">
+            <div class="video-player">
+                <video id="moviePlayer" controls>
+                    <source src="Назад в будущее 2.1989.720p.LEONARDO_[scarabey.org].mkv" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div id="adContainer" class="ad-container">
+                    <p>Your Ad Here</p>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="playBtn">Play</button>
+                <button id="pauseBtn">Pause</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const adContainer = document.getElementById('adContainer');
+        const adToggleBtn = document.getElementById('adToggleBtn');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const moviePlayer = document.getElementById('moviePlayer');
+
+        adToggleBtn.addEventListener('click', () => {
+            adContainer.classList.toggle('active');
+        });
+
+        playBtn.addEventListener('click', () => {
+            moviePlayer.play();
+        });
+
+        pauseBtn.addEventListener('click', () => {
+            moviePlayer.pause();
+        });
+    </script>
+</body>
+</html>
+
